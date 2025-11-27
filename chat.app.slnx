@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+  </Folder>
+  <Project Path="chat.api/chat.api.csproj" />
+  <Project Path="Foundation.Business/Foundation.Business.csproj" Id="f4ca08e7-4faa-4abf-8c11-21c79d85342b" />
+  <Project Path="Foundation.Models/Foundation.Models.csproj" Id="d7bba349-a194-4cd1-844e-8919a8b8ad5d" />
+</Solution>
