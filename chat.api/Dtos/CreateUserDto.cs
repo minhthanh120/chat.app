@@ -12,5 +12,6 @@ namespace chat.api.Dtos
         public string? Email { get; set; }
         [MaxLength(10)]
         public string? Phone { get; set; }
+        public string Password { get; set; }
     }
 }

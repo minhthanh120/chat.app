@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
@@ -59,12 +59,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.0" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="10.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.0.1" />
   </ItemGroup>
@@ -74,11 +79,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Interfaces\IUserService.cs" />
+    <None Include="Services\Abtractions\IUserService.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Foundation.Business\Foundation.Business.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
 
 </Project>

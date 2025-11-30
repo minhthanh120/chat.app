@@ -13,6 +13,7 @@ namespace Foundation.Business
         public DbSet<Conversation> Conversation { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<UserCredentials> UserCredentials { get; set; }
+        public DbSet<UserConversation> UserConversations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
