@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MongoDB.Driver.Linq;
+using SharpCompress.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -6,14 +7,13 @@ using System.Text;
 
 namespace Foundation.Business.Repositories
 {
-    public class BaseRepository<T>: IBaseRepository<T> where T : class
+    public class MongoBaseRepository<T> : IBaseRepository<T> where T : class
     {
-        private readonly ApplicationDbContext _dbContext;
-        public BaseRepository(ApplicationDbContext dbContext)
+        private readonly MongoDbContext _dbContext;
+        public MongoBaseRepository(MongoDbContext dbContext)
         {
             _dbContext = dbContext;
         }
-
         public async Task<T> Add(T entity)
         {
             var result = await this._dbContext.Set<T>().AddAsync(entity);
@@ -38,9 +38,9 @@ namespace Foundation.Business.Repositories
             return await this._dbContext.FindAsync<T>(id);
         }
         public async void Delete(object id)
-        { 
+        {
             var target = await this.GetById(id);
-            if (target ==null)
+            if (target == null)
             {
                 return;
             }

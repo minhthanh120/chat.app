@@ -22,5 +22,13 @@ namespace chat.api.Controllers
             await this._conversationService.CreateConversation(body, userId);
             return Ok();
         }
+        [Authorize]
+        [HttpPost("send-message")]
+        public async Task<IActionResult> SendMessage(CreateMessageDto body)
+        {
+            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            await this._conversationService.SendMessage(body, userId);
+            return Ok();
+        }
     }
 }

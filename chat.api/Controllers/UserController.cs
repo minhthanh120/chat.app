@@ -1,5 +1,5 @@
 ﻿using chat.api.Dtos;
-using chat.api.Interfaces;
+using chat.api.Services.Abtractions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
