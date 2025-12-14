@@ -6,5 +6,9 @@ namespace chat.api.Services.Abtractions
     {
         Task CreateConversation(CreateConversationDto body, string id);
         Task SendMessage(CreateMessageDto body, string userId);
+        Task<IList<CommonConversationDto>> GetLatestMessage(string userId);
+        Task<IList<MessageDto>> GetMessages(string conversationId, string userId, int page, int limit);
+        Task<IList<MemberDto>> GetMembers(string conversationId, string userId, int page, int limit);
+
     }
 }

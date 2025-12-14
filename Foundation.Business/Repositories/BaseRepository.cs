@@ -52,9 +52,22 @@ namespace Foundation.Business.Repositories
         {
             return await this._dbContext.Set<T>().Where(predicate).FirstAsync();
         }
-        public async Task<IEnumerable<T>> ListAsync(Expression<Func<T, bool>> predicate)
+        public async Task<IEnumerable<T>> ListAsync(Expression<Func<T, bool>> predicate,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            int? page = null,
+            int? pageSize = null)
         {
-            return await this._dbContext.Set<T>().Where(predicate).ToListAsync();
+            IQueryable<T> query = this._dbContext.Set<T>();
+            if (orderBy != null)
+            {
+                query = orderBy(query);
+            }
+            if (page.HasValue && pageSize.HasValue)
+                query = query
+                    .Skip((page.Value - 1) * pageSize.Value)
+                    .Take(pageSize.Value);
+
+            return await query.ToListAsync();
         }
     }
 }

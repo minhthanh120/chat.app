@@ -11,5 +11,8 @@ namespace Foundation.Models
         public string Name { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; }
+        public Guid? LatestMessageId { get; set; }
+        public DateTime? LatestMessageAt { get; set; }
+
     }
 }

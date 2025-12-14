@@ -1,3 +1,4 @@
+using Notification.Extentions;
 using System.Net.WebSockets;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,13 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddBusinessServices(builder.Configuration);
 
 var app = builder.Build();
-var webSocketOptions = new WebSocketOptions
+app.UseEndpoints(endpoints =>
 {
-    KeepAliveInterval = TimeSpan.FromMinutes(2)
-};
-app.UseWebSockets(webSocketOptions);
+    endpoints.MapHub<ClockHub>("/hubs/clock");
+});
+
 app.MapGet("/", () => "Notification Service is running");
 
 // Configure the HTTP request pipeline.

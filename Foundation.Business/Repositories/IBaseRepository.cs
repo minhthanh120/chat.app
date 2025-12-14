@@ -13,6 +13,10 @@ namespace Foundation.Business.Repositories
         Task<T> Update(T entity);
         void Delete(object id);
         Task<T> GetByWhereAsync(Expression<Func<T, bool>> predicate);
-        Task<IEnumerable<T>> ListAsync(Expression<Func<T, bool>> predicate);
+        Task<IEnumerable<T>> ListAsync(Expression<Func<T, bool>> predicate,
+                Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+                int? page = null,
+                int? pageSize = null
+            );
     }
 }
